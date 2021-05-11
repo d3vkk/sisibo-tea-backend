@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 
 
 CREATE TABLE IF NOT EXISTS `process`(
-    `process_id` INT(8) AUTO_INCREMENT NOT NULL PRIMARY KEY, #added AUTO_INCREMENT
+    `process_id` VARCHAR(12) NOT NULL PRIMARY KEY, # removed AUTO_INCREMENT, change data type from INT TO VARCHAR
     `start_time` DATETIME DEFAULT NULL,
     `end_time`  DATETIME DEFAULT NULL,
     `elapse_time` VARCHAR(255) DEFAULT NULL, #modified from TIME to VARCHAR(255)
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `process`(
 
 CREATE TABLE IF NOT EXISTS `teadata`(
     `id` INT(6) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `process_id` INT(8) NOT NULL,
+    `process_id` VARCHAR(12) NOT NULL,# removed AUTO_INCREMENT, change data type from INT TO VARCHAR
     `red` INT(3) NOT NULL,
     `green` INT(3) NOT NULL,
     `blue` INT(3) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `logs`(
 `log_id` INT(6) AUTO_INCREMENT PRIMARY KEY,
 `date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 `employee_id` VARCHAR(12) NOT NULL,
-`description` VARCHAr(50) NOT NULL,  #example `logged in`, `logged out`
+`description` VARCHAR(50) NOT NULL,  #example `logged in`, `logged out`
 FOREIGN KEY (`employee_id`) REFERENCES `users`(`employee_id`)
 );
 
